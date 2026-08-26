@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grenki, кафе в центре Оша</title>
+<meta name="description" content="Кафе Grenki в центре Оша: кофе, комбо-завтраки с 8:00, европейская и азиатская кухня, все халяль. Диваны у панорамных окон, 200 мест. Бронь стола в WhatsApp.">
+<meta name="theme-color" content="#F4EEE2">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232E5240'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' font-weight='700' fill='%23F4EEE2' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+<!-- DEPLOY STEP: заменить og:url и og:image на живой адрес перед упаковкой -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Grenki, кафе в центре Оша">
+<meta property="og:description" content="Кофе, завтраки с 8:00, европейская и азиатская кухня. Все халяль. Бронь стола в WhatsApp.">
+<meta property="og:url" content="https://example.com/">
+<meta property="og:image" content="https://example.com/assets/hero-poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Podkova:wght@500;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#F4EEE2;
+  --panel:#FBF7ED;
+  --accent:#2E5240;
+  --accent-hover:#233F31;
+  --accent-muted:rgba(46,82,64,.22);
+  --text-secondary:#5F6A5C;
+  --text-primary:#1D2921;
+  --hero-text:#F6F2E8;
+  --wood:#B97F3F;
+  --border-strong:#9AA694;
+  --tshadow:0 1px 2px rgba(5,5,10,.95),0 3px 12px rgba(5,5,10,.78),0 10px 44px rgba(5,5,10,.8);
+  --ease:cubic-bezier(.22,.7,.28,1);
+  --ease-soft:cubic-bezier(.33,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden;overflow-x:clip}
+html{scroll-behavior:smooth}
+body{
+  background:var(--canvas);
+  color:var(--text-primary);
+  font-family:'Golos Text',system-ui,sans-serif;
+  font-size:17px;line-height:1.6;
+  opacity:0;transition:opacity .8s var(--ease-soft);
+}
+body.ready{opacity:1}
+body::before{
+  content:"";position:fixed;inset:-20%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(42% 34% at 24% 22%,rgba(185,127,63,.07),transparent 70%),
+    radial-gradient(38% 30% at 78% 74%,rgba(46,82,64,.06),transparent 70%);
+  animation:envdrift 90s var(--ease-soft) -30s infinite alternate;
+}
+@keyframes envdrift{from{transform:translate3d(-2%,-1%,0)}to{transform:translate3d(2%,2%,0)}}
+body.paused *,body.paused *::before,body.paused *::after{animation-play-state:paused !important}
+
+h1,h2,h3,.display{font-family:'Podkova',serif;font-weight:700;line-height:1.12}
+.mono{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+a{color:var(--accent)}
+img{max-width:100%;height:auto;display:block}
+.skip{position:absolute;left:-999px;top:0;z-index:99;background:var(--accent);color:#fff;padding:10px 16px;border-radius:0 0 10px 0}
+.skip:focus{left:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+
+/* ===== NAV ===== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:40;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px clamp(16px,4vw,44px);
+  color:var(--hero-text);
+  transition:background .45s var(--ease-soft),color .45s var(--ease-soft),box-shadow .45s var(--ease-soft);
+}
+nav .wordmark{font-family:'Podkova',serif;font-weight:700;font-size:1.35rem;letter-spacing:.06em;color:inherit;text-decoration:none}
+nav .links{display:flex;gap:clamp(10px,2vw,26px);align-items:center}
+nav .links a{color:inherit;text-decoration:none;font-size:.92rem;opacity:.88;transition:opacity .3s var(--ease-soft)}
+nav .links a:hover{opacity:1}
+nav.solid{background:rgba(244,238,226,.9);backdrop-filter:blur(12px);color:var(--text-primary);box-shadow:0 1px 0 var(--accent-muted)}
+.btn{
+  display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+  font-weight:600;font-size:.95rem;padding:11px 22px;border-radius:999px;border:1px solid transparent;
+  transition:background .3s var(--ease-soft),transform .3s var(--ease-soft),box-shadow .3s var(--ease-soft);
+  text-shadow:none;
+}
+.btn:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.btn.ghost{background:transparent;border-color:currentColor;color:inherit}
+.btn.ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
+
+/* ===== HERO ===== */
+.hero{position:relative;height:500vh;z-index:1}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#171c17}
+.poster{
+  position:absolute;inset:0;background:url('assets/hero-poster.jpg') center/cover no-repeat;
+  transform:scale(1);will-change:transform;
+}
+#herovid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s var(--ease-soft)}
+.stage.video-ready #herovid{opacity:1}
+.scrim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 120% 90% at 50% 45%,rgba(10,10,18,0) 35%,rgba(10,10,18,.62) 100%)}
+
+.band{position:absolute;inset:0;display:grid;align-items:center;opacity:0;visibility:hidden;color:var(--hero-text);text-shadow:var(--tshadow);pointer-events:none}
+.band .inner{position:relative;z-index:2;max-width:520px;padding:0 clamp(20px,5vw,72px);pointer-events:auto}
+.band.right{justify-items:end}
+.band.left{justify-items:start}
+.band.center{justify-items:center}
+.band.center .inner{text-align:center;max-width:620px}
+.band::before{content:"";position:absolute;inset:-4%;pointer-events:none;opacity:calc(.25 + .75*var(--k,1))}
+.band.right::before{background:radial-gradient(ellipse 46% 62% at 74% 50%,rgba(5,5,10,.62) 0%,rgba(5,5,10,.4) 46%,rgba(5,5,10,0) 76%)}
+.band.left::before{background:radial-gradient(ellipse 46% 62% at 26% 50%,rgba(5,5,10,.68) 0%,rgba(5,5,10,.44) 46%,rgba(5,5,10,0) 76%)}
+.band.center::before{background:radial-gradient(ellipse 62% 56% at 50% 46%,rgba(5,5,10,.7) 0%,rgba(5,5,10,.46) 46%,rgba(5,5,10,0) 76%)}
+.band .kicker{display:inline-block;background:rgba(8,8,15,.55);border:1px solid rgba(96,96,126,.3);border-radius:10px;backdrop-filter:blur(10px);text-shadow:0 1px 3px rgba(5,5,10,.85);padding:6px 12px;margin-bottom:16px;color:#EDE6D6}
+.band h1{font-size:clamp(3rem,7.5vw,5.6rem);letter-spacing:.04em}
+.band .line{font-family:'Podkova',serif;font-weight:500;font-size:clamp(1.5rem,3.2vw,2.3rem);line-height:1.25}
+.band .w{display:inline-block;--kc:clamp(0,(var(--k,0) - var(--th,0)) * 2.8,1);opacity:var(--kc);transform:translateY(calc((1 - var(--kc)) * -18px))}
+.band.blur .soft{position:absolute;inset:0;filter:blur(10px);opacity:calc(.85*(1 - var(--k,0)));pointer-events:none}
+.band.blur .sharp{opacity:var(--k,0)}
+.band.settle{--ks:clamp(0,(var(--k,0) - .62)*4.5,1);--kb:clamp(0,(var(--k,0) - .78)*5,1)}
+.band.settle .w{--kc:clamp(0,(var(--k,0) - var(--th,0)) * 3,1);transform:translateY(calc((1 - var(--kc)) * 16px))}
+.band.settle h2{font-size:clamp(2.4rem,5.5vw,4rem)}
+.band.settle .sub{margin-top:14px;font-size:clamp(1rem,1.6vw,1.15rem);opacity:var(--ks);transform:translateY(calc((1 - var(--ks)) * 12px))}
+.band.settle .cta-row{margin-top:26px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:var(--kb);transform:translateY(calc((1 - var(--kb)) * 12px))}
+
+.cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:#EDE6D6;opacity:1;transition:opacity .5s var(--ease-soft);pointer-events:none}
+.cue .chip{background:rgba(8,8,15,.55);border:1px solid rgba(96,96,126,.3);border-radius:10px;backdrop-filter:blur(10px);padding:5px 11px;text-shadow:0 1px 3px rgba(5,5,10,.85)}
+.cue svg{animation:cuebob 2.6s var(--ease-soft) -1.2s infinite}
+.cue.gone{opacity:0}
+@keyframes cuebob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+.steamwisp{position:absolute;left:50%;top:34%;z-index:2;pointer-events:none;opacity:.5;animation:wisp 7s var(--ease-soft) -2s infinite alternate}
+@keyframes wisp{from{opacity:.3;transform:translate3d(-4px,0,0)}to{opacity:.62;transform:translate3d(4px,-10px,0)}}
+
+/* static hero copy, only under the gates */
+.static-copy{position:absolute;inset:0;z-index:3;display:none;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:0 clamp(20px,6vw,60px) 12vh;color:var(--hero-text);text-shadow:var(--tshadow)}
+.static-copy::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,5,10,.25) 0%,rgba(5,5,10,.05) 40%,rgba(5,5,10,.78) 100%)}
+.static-copy h2{font-size:clamp(2.3rem,9vw,3.4rem)}
+.static-copy p{margin-top:12px;max-width:34ch;font-size:1.02rem}
+.static-copy .btn{margin-top:22px}
+
+/* ===== FIVE GATES: этот список условий должен посимвольно совпадать с массивом GATES в JS ===== */
+@media (max-width: 720px), (orientation: portrait) and (max-width: 1024px), (orientation: portrait) and (pointer: coarse), (orientation: landscape) and (pointer: coarse) and (max-height: 560px), (prefers-reduced-motion: reduce){
+  .hero{height:100vh;height:100svh}
+  .band,.cue,.steamwisp,#herovid{display:none}
+  .static-copy{display:flex}
+  .poster{transform:none !important}
+}
+@media (max-height:560px){.cue{display:none}}
+
+/* ===== SECTIONS ===== */
+main{position:relative;z-index:1}
+.sec{padding:clamp(64px,9vw,120px) clamp(20px,6vw,72px);position:relative}
+.sec .shell{max-width:1160px;margin:0 auto}
+.kick{color:var(--wood);margin-bottom:14px}
+.sec h2{font-size:clamp(1.9rem,3.6vw,2.7rem);max-width:22ch}
+.sec p{color:var(--text-secondary)}
+.sec .lead{color:var(--text-primary);font-size:1.08rem}
+
+/* steam divider, the signature line */
+.steam-div{display:block;margin:0 auto;height:84px;width:44px;overflow:visible}
+.steam-div path{fill:none;stroke:var(--wood);stroke-width:2;stroke-linecap:round;stroke-dasharray:220;stroke-dashoffset:220;transition:stroke-dashoffset 1.4s var(--ease)}
+.vis .steam-div path{stroke-dashoffset:0}
+.vis .steam-div{animation:steampulse 6s var(--ease-soft) -2s infinite alternate}
+@keyframes steampulse{from{opacity:.55}to{opacity:1}}
+
+/* entrances */
+.part{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.sec.in .part{opacity:1;transform:none}
+.sec.in .part:nth-child(2){transition-delay:.09s}
+.sec.in .part:nth-child(3){transition-delay:.18s}
+.sec.in .part:nth-child(4){transition-delay:.27s}
+.sec.in .part:nth-child(5){transition-delay:.36s}
+.sec.entered .part:nth-child(2),.sec.entered .part:nth-child(3),.sec.entered .part:nth-child(4),.sec.entered .part:nth-child(5){transition-delay:0s}
+
+/* Место */
+.place-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(28px,4vw,64px);align-items:center}
+.frame{border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(29,41,33,.18)}
+.frame img{transition:transform 6s var(--ease-soft)}
+.frame:hover img{transform:scale(1.035)}
+.quoteline{margin-top:22px;padding-left:18px;border-left:3px solid var(--accent);font-family:'Podkova',serif;font-weight:500;font-size:1.15rem;color:var(--text-primary)}
+.factrow{display:flex;gap:26px;margin-top:26px;flex-wrap:wrap}
+.fact{display:flex;flex-direction:column;gap:2px}
+.fact b{font-family:'Podkova',serif;font-size:1.7rem;color:var(--accent)}
+.fact span{font-size:.85rem;color:var(--text-secondary)}
+
+/* Кухня */
+.menu-hero{border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(29,41,33,.18);margin-bottom:clamp(28px,4vw,52px)}
+.menu-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
+.mcol{background:var(--panel);border:1px solid var(--accent-muted);border-radius:16px;padding:26px 24px;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.mcol:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(29,41,33,.12)}
+.mcol h3{font-size:1.25rem;margin-bottom:6px}
+.mcol .mono{color:var(--wood)}
+.mcol ul{list-style:none;margin-top:14px}
+.mcol li{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px dashed var(--accent-muted);color:var(--text-secondary)}
+.mcol li:last-child{border-bottom:none}
+.mcol li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;transform:translateY(-2px)}
+.check-note{margin-top:22px;display:flex;align-items:baseline;gap:10px;justify-content:center;color:var(--text-secondary)}
+.check-note b{font-family:'JetBrains Mono',monospace;color:var(--text-primary)}
+
+/* Завтраки + интерактив */
+.brk-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(28px,4vw,64px);align-items:center}
+.holdcard{background:var(--panel);border:1px solid var(--accent-muted);border-radius:18px;padding:clamp(22px,3vw,36px);text-align:center}
+.cupwrap{width:150px;margin:14px auto 6px}
+.cup-steam path{fill:none;stroke:var(--wood);stroke-width:2;stroke-linecap:round;opacity:0;transition:opacity .8s var(--ease-soft)}
+.holdcard.done .cup-steam path{opacity:.8}
+.holdbtn{
+  margin-top:16px;cursor:pointer;user-select:none;-webkit-user-select:none;touch-action:none;
+  background:var(--accent);color:#fff;border:none;font:inherit;font-weight:600;
+  padding:12px 26px;border-radius:999px;transition:background .3s var(--ease-soft),transform .2s var(--ease-soft);
+}
+.holdbtn:hover{background:var(--accent-hover)}
+.holdbtn:active{transform:scale(.97)}
+.holdcard.done .holdbtn{background:var(--wood)}
+.sched{margin-top:26px;text-align:left;list-style:none}
+.sched li{display:flex;align-items:baseline;gap:14px;padding:11px 4px;border-bottom:1px dashed var(--accent-muted);opacity:.36;transform:translateX(-6px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.sched li:last-child{border-bottom:none}
+.sched .mono{color:var(--wood);flex:none}
+.holdcard.done .sched li{opacity:1;transform:none}
+.holdcard.done .sched li:nth-child(2){transition-delay:.15s}
+.holdcard.done .sched li:nth-child(3){transition-delay:.3s}
+
+/* Отзывы */
+.rev-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(24px,3vw,44px)}
+.badge{display:flex;align-items:baseline;gap:14px;background:var(--accent);color:#fff;border-radius:16px;padding:18px 26px}
+.badge b{font-family:'Podkova',serif;font-size:2.6rem;line-height:1}
+.badge div{display:flex;flex-direction:column;gap:2px}
+.badge .mono{opacity:.85;letter-spacing:.1em}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.5vw,30px)}
+.rev{background:var(--panel);border:1px solid var(--accent-muted);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.rev p{font-family:'Podkova',serif;font-weight:500;font-size:1.06rem;color:var(--text-primary);line-height:1.45}
+.rev .who{margin-top:auto;color:var(--text-secondary);font-size:.85rem}
+
+/* FAQ */
+.faq-shell{max-width:760px;margin:0 auto}
+.qa{border-bottom:1px solid var(--accent-muted)}
+.q{
+  width:100%;background:none;border:none;font:inherit;text-align:left;cursor:pointer;
+  display:flex;align-items:baseline;justify-content:space-between;gap:18px;
+  padding:20px 4px;font-family:'Podkova',serif;font-weight:500;font-size:1.12rem;color:var(--text-primary);
+}
+.q .ind{font-family:'JetBrains Mono',monospace;color:var(--accent);transition:transform .4s var(--ease);transform-origin:center}
+.qa.open .ind{transform:rotate(45deg)}
+.a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.qa.open .a{grid-template-rows:1fr}
+.a-in{overflow:hidden}
+.a-in p{padding:0 4px 20px;max-width:58ch}
+
+/* Контакты */
+.cta-sec{background:var(--accent);color:#F0EBDD;border-radius:26px;max-width:1160px;margin:0 auto;padding:clamp(44px,6vw,84px) clamp(24px,5vw,72px);text-align:center;position:relative;overflow:hidden}
+.cta-sec::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 0%,rgba(185,127,63,.25),transparent 70%);opacity:.7;animation:ctaglow 5.5s var(--ease-soft) -2s infinite alternate;pointer-events:none}
+@keyframes ctaglow{from{opacity:.45}to{opacity:.85}}
+.cta-sec h2{color:#fff;max-width:none}
+.cta-sec .lead{color:#D8E2D3;max-width:44ch;margin:14px auto 0}
+.cta-sec .btn{background:#F4EEE2;color:var(--accent);font-size:1.05rem;padding:15px 34px;margin-top:30px;position:relative}
+.cta-sec .btn:hover{background:#fff;transform:translateY(-2px)}
+.cta-note{margin-top:14px;font-size:.85rem;color:#C4D2BF}
+.cta-info{display:flex;justify-content:center;gap:clamp(18px,4vw,54px);flex-wrap:wrap;margin-top:38px;padding-top:28px;border-top:1px solid rgba(244,238,226,.25)}
+.cta-info div{display:flex;flex-direction:column;gap:4px;align-items:center}
+.cta-info .mono{color:#C9A227;color:#D9B96B}
+.cta-info a{color:#F0EBDD}
+
+/* footer */
+footer{padding:44px clamp(20px,6vw,72px) 54px;text-align:center;color:var(--text-secondary)}
+footer .wordmark{font-family:'Podkova',serif;font-weight:700;font-size:1.3rem;color:var(--text-primary);letter-spacing:.05em}
+footer .slogan{margin-top:4px;font-family:'Podkova',serif;color:var(--wood)}
+footer .small{margin-top:14px;font-size:.85rem}
+footer a{color:var(--text-secondary)}
+
+/* ===== адаптив ===== */
+@media (max-width:1024px){
+  .menu-cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:880px){
+  .place-grid,.brk-grid{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .menu-cols{grid-template-columns:1fr}
+  nav .links a:not(.btn){display:none}
+}
+@media (pointer:coarse){
+  .btn,.holdbtn,.q{min-height:44px}
+  .btn{display:inline-flex;align-items:center;justify-content:center}
+}
+
+/* ===== reduced motion, полностью ===== */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;transition-delay:0s !important}
+  body{opacity:1}
+  .part{opacity:1;transform:none}
+  .steam-div path{stroke-dashoffset:0}
+  .sched li{opacity:1;transform:none}
+  .holdcard .cup-steam path{opacity:.8}
+  .cue{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+
+<nav id="nav" aria-label="Основная навигация">
+  <a class="wordmark" href="#top">GRENKI</a>
+  <div class="links">
+    <a href="#place">Место</a>
+    <a href="#menu">Меню</a>
+    <a href="#breakfast">Завтраки</a>
+    <a href="#reviews">Отзывы</a>
+    <a class="btn" href="#bron">Забронировать</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="stage" id="stage">
+    <div class="poster" id="poster" aria-hidden="true"></div>
+    <video id="herovid" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
+    <div class="scrim" aria-hidden="true"></div>
+    <svg class="steamwisp" width="40" height="90" viewBox="0 0 40 90" aria-hidden="true">
+      <path d="M20 86 C 10 70, 30 58, 20 42 C 12 29, 26 18, 20 4" fill="none" stroke="#EDE6D6" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+    </svg>
+
+    <div class="band right" data-a="0" data-b="0.24" data-first>
+      <div class="inner">
+        <p class="kicker mono">Кафе в центре Оша</p>
+        <h1 class="split">GRENKI</h1>
+      </div>
+    </div>
+
+    <div class="band left" data-a="0.26" data-b="0.52">
+      <div class="inner">
+        <p class="line split">Утро здесь начинается в 8:00. С кофе и завтраков.</p>
+      </div>
+    </div>
+
+    <div class="band right blur" data-a="0.54" data-b="0.79">
+      <div class="inner">
+        <p class="line sharp">Европейская и азиатская кухня. Все халяль.</p>
+        <p class="line soft" aria-hidden="true">Европейская и азиатская кухня. Все халяль.</p>
+      </div>
+    </div>
+
+    <div class="band center settle" data-a="0.83" data-b="1" data-last>
+      <div class="inner">
+        <h2 class="split">Ешь со вкусом.</h2>
+        <p class="sub">Забронируйте стол, остальное сделаем мы.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://wa.me/996557000153?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20Grenki" target="_blank" rel="noopener">Забронировать в WhatsApp</a>
+          <a class="btn ghost" href="#menu">Смотреть меню</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="static-copy">
+      <h2>Ешь со вкусом.</h2>
+      <p>Кафе Grenki в центре Оша. Кофе, завтраки, европейская и азиатская кухня. Все халяль.</p>
+      <a class="btn" href="https://wa.me/996557000153?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20Grenki" target="_blank" rel="noopener">Забронировать в WhatsApp</a>
+    </div>
+
+    <div class="cue" id="cue" aria-hidden="true">
+      <span class="chip mono">Листайте</span>
+      <svg width="18" height="18" viewBox="0 0 18 18"><path d="M4 6.5 L9 11.5 L14 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <section class="sec" id="place" aria-labelledby="place-h">
+    <div class="shell">
+      <svg class="steam-div part" viewBox="0 0 44 84" aria-hidden="true"><path d="M22 80 C 10 64, 34 52, 22 36 C 12 23, 30 12, 22 2"/></svg>
+      <div class="place-grid">
+        <div class="frame part"><img src="assets/hall.jpg" alt="Зал кафе Grenki: зеленые диваны у панорамных окон с видом на улицу и сквер" loading="lazy" width="1920" height="1072"></div>
+        <div>
+          <p class="kick mono part" id="place-h">Место, где остаются</p>
+          <h2 class="part">Заходят на кофе. Остаются до обеда.</h2>
+          <p class="lead part" style="margin-top:16px;max-width:52ch">Диваны у панорамных окон, вид на оживленную улицу и сквер, 200 мест. Первое халяльное кафе в Оше.</p>
+          <div class="factrow part">
+            <div class="fact"><b>200</b><span>посадочных мест</span></div>
+            <div class="fact"><b>8:00</b><span>двери открыты</span></div>
+            <div class="fact"><b>№1</b><span>первое халяль-кафе города</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="menu" aria-labelledby="menu-h">
+    <div class="shell">
+      <svg class="steam-div part" viewBox="0 0 44 84" aria-hidden="true"><path d="M22 80 C 10 64, 34 52, 22 36 C 12 23, 30 12, 22 2"/></svg>
+      <p class="kick mono part" id="menu-h" style="text-align:center">Кухня</p>
+      <h2 class="part" style="text-align:center;margin:0 auto 26px">Три кухни за одним столом</h2>
+      <div class="menu-hero part"><img src="assets/dishes.jpg" alt="Блюда Grenki на деревянном столе: рамен, суши, пицца и салат" loading="lazy" width="1920" height="1072"></div>
+      <div class="menu-cols">
+        <div class="mcol part">
+          <p class="mono">С утра</p>
+          <h3>Кофе и завтраки</h3>
+          <ul>
+            <li>Эспрессо и капучино</li>
+            <li>Гренки с медом и ягодами</li>
+            <li>Комбо-завтраки 8:00-11:00</li>
+            <li>Кофе с собой</li>
+          </ul>
+        </div>
+        <div class="mcol part">
+          <p class="mono">Азия</p>
+          <h3>Горячо и по-настоящему</h3>
+          <ul>
+            <li>Рамен</li>
+            <li>Вок-лапша и рис</li>
+            <li>Суши и роллы</li>
+            <li>Поке и кукси</li>
+          </ul>
+        </div>
+        <div class="mcol part">
+          <p class="mono">Европа</p>
+          <h3>Знакомое и любимое</h3>
+          <ul>
+            <li>Пицца из печи</li>
+            <li>Паста</li>
+            <li>Салаты</li>
+            <li>Супы</li>
+          </ul>
+        </div>
+      </div>
+      <p class="check-note part">Средний чек <b>600 сом</b>, вся кухня халяль</p>
+    </div>
+  </section>
+
+  <section class="sec" id="breakfast" aria-labelledby="brk-h">
+    <div class="shell">
+      <svg class="steam-div part" viewBox="0 0 44 84" aria-hidden="true"><path d="M22 80 C 10 64, 34 52, 22 36 C 12 23, 30 12, 22 2"/></svg>
+      <div class="brk-grid">
+        <div>
+          <p class="kick mono part" id="brk-h">Завтраки</p>
+          <h2 class="part">Наполните свою чашку</h2>
+          <p class="lead part" style="margin-top:16px;max-width:48ch">Зажмите кнопку и подержите, пока нальется кофе. Так же просто начинается утро в Grenki.</p>
+          <div class="holdcard part" id="holdcard">
+            <div class="cupwrap">
+              <svg viewBox="0 0 150 130" aria-hidden="true">
+                <g class="cup-steam"><path d="M62 26 C 56 18, 66 12, 60 4"/><path d="M78 26 C 72 18, 82 12, 76 4"/></g>
+                <path d="M38 44 h64 v40 a32 32 0 0 1 -64 0 z" fill="none" stroke="#2E5240" stroke-width="4" stroke-linejoin="round"/>
+                <path d="M102 52 h10 a14 14 0 0 1 0 28 h-12" fill="none" stroke="#2E5240" stroke-width="4"/>
+                <clipPath id="cupclip"><path d="M41 47 h58 v37 a29 29 0 0 1 -58 0 z"/></clipPath>
+                <g clip-path="url(#cupclip)">
+                  <rect id="coffee" x="41" y="47" width="58" height="66" fill="#B97F3F" style="transform-box:fill-box;transform-origin:bottom;transform:scaleY(0)"/>
+                </g>
+                <ellipse cx="70" cy="118" rx="44" ry="5" fill="rgba(46,82,64,.15)"/>
+              </svg>
+            </div>
+            <button class="holdbtn" id="holdbtn" type="button" aria-describedby="hold-hint">Зажмите и держите</button>
+            <p id="hold-hint" style="margin-top:10px;font-size:.82rem">С клавиатуры: удерживайте пробел</p>
+            <ul class="sched" aria-label="Расписание завтраков">
+              <li><span class="mono">8:00</span><span>Двери открыты, кофе уже горячий</span></li>
+              <li><span class="mono">8:00-11:00</span><span>Комбо-завтраки</span></li>
+              <li><span class="mono">Весь день</span><span>Кофе с собой</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="frame part"><img src="assets/breakfast.jpg" alt="Завтрак в Grenki: золотистые гренки с медом и ягодами, капучино в зеленой чашке" loading="lazy" width="1920" height="1072"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="reviews" aria-labelledby="rev-h">
+    <div class="shell">
+      <svg class="steam-div part" viewBox="0 0 44 84" aria-hidden="true"><path d="M22 80 C 10 64, 34 52, 22 36 C 12 23, 30 12, 22 2"/></svg>
+      <div class="rev-head part">
+        <div>
+          <p class="kick mono" id="rev-h">Отзывы</p>
+          <h2>Гости говорят сами</h2>
+        </div>
+        <div class="badge">
+          <b>4.5</b>
+          <div>
+            <span>467 оценок на 2ГИС</span>
+            <span class="mono">Профиль подтвержден</span>
+          </div>
+        </div>
+      </div>
+      <div class="rev-grid">
+        <blockquote class="rev part"><p>«Зашел позавтракать и просидел до самого обеда. Блюда просто восхитительные!»</p><footer class="who">Гость, отзыв на 2ГИС</footer></blockquote>
+        <blockquote class="rev part"><p>«Столики у панорамного остекления, вид на оживленную улицу и сквер.»</p><footer class="who">Гость, отзыв на 2ГИС</footer></blockquote>
+        <blockquote class="rev part"><p>«Приходим всегда только сюда. Официанты всегда доброжелательные.»</p><footer class="who">Гость, отзыв на 2ГИС</footer></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" aria-labelledby="faq-h">
+    <div class="faq-shell">
+      <svg class="steam-div part" viewBox="0 0 44 84" aria-hidden="true"><path d="M22 80 C 10 64, 34 52, 22 36 C 12 23, 30 12, 22 2"/></svg>
+      <p class="kick mono part" id="faq-h" style="text-align:center">Вопросы</p>
+      <h2 class="part" style="text-align:center;margin:0 auto 18px">Что спрашивают чаще всего</h2>
+      <div class="part">
+        <div class="qa"><button class="q" aria-expanded="false">Бывают ли свободные места вечером?<span class="ind" aria-hidden="true">+</span></button><div class="a"><div class="a-in"><p>Вечером зал часто полный. Напишите в WhatsApp заранее, и стол будет ждать.</p></div></div></div>
+        <div class="qa"><button class="q" aria-expanded="false">Все ли блюда халяль?<span class="ind" aria-hidden="true">+</span></button><div class="a"><div class="a-in"><p>Да. Grenki, первое халяльное кафе в Оше, и все меню халяль.</p></div></div></div>
+        <div class="qa"><button class="q" aria-expanded="false">Есть ли доставка?<span class="ind" aria-hidden="true">+</span></button><div class="a"><div class="a-in"><p>Да, по Ошу. Заказ через WhatsApp или инстаграм @grenki.osh.</p></div></div></div>
+        <div class="qa"><button class="q" aria-expanded="false">До скольких завтраки?<span class="ind" aria-hidden="true">+</span></button><div class="a"><div class="a-in"><p>Комбо-завтраки каждый день с 8:00 до 11:00.</p></div></div></div>
+        <div class="qa"><button class="q" aria-expanded="false">Где вы находитесь?<span class="ind" aria-hidden="true">+</span></button><div class="a"><div class="a-in"><p>Улица Курманжан Датка, 256, центр Оша.</p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="bron" aria-labelledby="cta-h">
+    <div class="cta-sec">
+      <p class="kick mono part" style="color:#D9B96B">Бронь стола</p>
+      <h2 class="part" id="cta-h">Ваш диван у окна ждет</h2>
+      <p class="lead part">Одно сообщение, и стол будет накрыт к вашему приходу. Отвечаем быстро.</p>
+      <a class="btn part" href="https://wa.me/996557000153?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%BB%20%D0%B2%20Grenki" target="_blank" rel="noopener">Забронировать в WhatsApp</a>
+      <p class="cta-note part">Кнопка откроет чат с кафе в WhatsApp</p>
+      <div class="cta-info part">
+        <div><span class="mono">Адрес</span><span>Курманжан Датка, 256, Ош</span></div>
+        <div><span class="mono">Часы</span><span>Каждый день с 8:00</span></div>
+        <div><span class="mono">Инстаграм</span><a href="https://www.instagram.com/grenki.osh/" target="_blank" rel="noopener">@grenki.osh</a></div>
+        <div><span class="mono">Мы на карте</span><a href="https://2gis.kg/osh/firm/70000001039326841" target="_blank" rel="noopener">2ГИС</a></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="wordmark">GRENKI</p>
+  <p class="slogan">Ешь со вкусом</p>
+  <p class="small">Курманжан Датка, 256, Ош · <a href="https://www.instagram.com/grenki.osh/" target="_blank" rel="noopener">@grenki.osh</a></p>
+</footer>
+
+<script>
+(function(){
+'use strict';
+
+/* ===== будущее видео: когда появится ролик, положите его в assets/hero-scrub.mp4,
+   поставьте HAS_VIDEO = true и впишите реальный размер файла в VIDEO_BYTES ===== */
+var HAS_VIDEO = false;
+var VIDEO_URL = 'assets/hero-scrub.mp4';
+var VIDEO_BYTES = 0;
+
+var stage = document.getElementById('stage');
+var poster = document.getElementById('poster');
+var video = document.getElementById('herovid');
+var hero = document.querySelector('.hero');
+var cue = document.getElementById('cue');
+var nav = document.getElementById('nav');
+var bands = [].slice.call(document.querySelectorAll('.band'));
+var reduceMq = matchMedia('(prefers-reduced-motion: reduce)');
+
+/* ===== сид-генератор, одинаковые "случайные" пороги на каждой загрузке ===== */
+function rng(seed){var s = seed >>> 0;return function(){s = (s * 1664525 + 1013904223) >>> 0;return s / 4294967296}}
+
+/* ===== разбивка заголовков на слова ===== */
+document.querySelectorAll('.band .split').forEach(function(el, bi){
+  var text = el.textContent;
+  var r = rng(1000 + bi * 97);
+  var sr = document.createElement('span');
+  sr.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap';
+  sr.textContent = text;
+  var vis = document.createElement('span');
+  vis.setAttribute('aria-hidden', 'true');
+  var words = text.split(' ');
+  words.forEach(function(w, i){
+    var span = document.createElement('span');
+    span.className = 'w';
+    span.textContent = w;
+    span.style.setProperty('--th', (i / Math.max(1, words.length) * 0.42 + r() * 0.08).toFixed(3));
+    vis.appendChild(span);
+    if (i < words.length - 1) vis.appendChild(document.createTextNode(' '));
+  });
+  el.textContent = '';
+  el.appendChild(sr);
+  el.appendChild(vis);
+});
+
+/* ===== данные бендов ===== */
+var bandState = bands.map(function(el){
+  var a = parseFloat(el.dataset.a), b = parseFloat(el.dataset.b);
+  return {el: el, a: a, b: b, first: 'first' in el.dataset, last: 'last' in el.dataset, op: -1, k: -1, visb: null};
+});
+
+var smoothstep = function(p, e0, e1){
+  var t = Math.min(1, Math.max(0, (p - e0) / (e1 - e0)));
+  return t * t * (3 - 2 * t);
+};
+var clamp01 = function(v){return Math.min(1, Math.max(0, v))};
+
+/* band one: одноразовый вход по времени, дальше всем правит скролл */
+var loadK = 0, loadT0 = 0;
+function tickLoadK(now){
+  if (!loadT0) loadT0 = now;
+  loadK = clamp01((now - loadT0) / 1400);
+  loadK = loadK * loadK * (3 - 2 * loadK);
+  if (loadK < 1 && scrubOn) requestAnimationFrame(tickLoadK);
+  applyBands(shown);
+}
+
+var zoomShown = -1;
+function applyBands(p){
+  for (var i = 0; i < bandState.length; i++){
+    var s = bandState[i];
+    var f = Math.min(0.02, (s.b - s.a) / 3);
+    var op = (s.first ? 1 : smoothstep(p, s.a, s.a + f)) * (s.last ? 1 : (1 - smoothstep(p, s.b - f, s.b)));
+    var ramp = Math.min(0.025, (s.b - s.a) * 0.35);
+    var k = clamp01((p - s.a) / ramp);
+    if (s.first) k = Math.max(k, loadK);
+    if (Math.abs(op - s.op) > 0.008 || (op > 0) !== s.visb){
+      s.op = op;
+      s.el.style.opacity = op.toFixed(3);
+      var vis = op > 0;
+      if (vis !== s.visb){s.visb = vis; s.el.style.visibility = vis ? 'visible' : 'hidden'}
+    }
+    if (Math.abs(k - s.k) > 0.008){
+      s.k = k;
+      s.el.style.setProperty('--k', k.toFixed(3));
+    }
+  }
+  var z = 1 + p * 0.07;
+  if (Math.abs(z - zoomShown) > 0.0008){
+    zoomShown = z;
+    poster.style.transform = 'scale(' + z.toFixed(4) + ')';
+  }
+  if (cue){
+    var gone = p > 0.03;
+    if (gone !== cue.classList.contains('gone')) cue.classList.toggle('gone', gone);
+  }
+}
+
+/* ===== прогресс героя ===== */
+function heroProgress(){
+  var range = hero.offsetHeight - innerHeight;
+  if (range <= 0) return 0;
+  return clamp01(scrollY / range);
+}
+
+/* ===== lerp-петля, отдыхает при сходимости ===== */
+var target = 0, shown = 0, rafId = null, lastTick = 0, heroOnScreen = true;
+function tick(now){
+  var dt = Math.min(100, now - (lastTick || now));
+  lastTick = now;
+  var k = 0.16;
+  shown += (target - shown) * (1 - Math.pow(1 - k, dt / 16.667));
+  if (Math.abs(target - shown) < 0.0005){
+    shown = target; rafId = null; lastTick = 0;
+  } else {
+    rafId = requestAnimationFrame(tick);
+  }
+  if (HAS_VIDEO && video.duration) requestSeek(shown * video.duration);
+  applyBands(shown);
+}
+function onScroll(){
+  target = heroProgress();
+  if (rafId === null && heroOnScreen) rafId = requestAnimationFrame(tick);
+}
+
+new IntersectionObserver(function(en){
+  heroOnScreen = en[0].isIntersecting;
+  if (heroOnScreen && scrubOn) onScroll();
+}).observe(hero);
+
+/* ===== гейт секов, с защитой от дедлока ===== */
+var seekBusy = false, pendingTime = null;
+function requestSeek(t){
+  if (!video.duration) return;
+  if (seekBusy){pendingTime = t; return}
+  seekBusy = true;
+  video.currentTime = t;
+}
+video.addEventListener('seeked', function(){
+  seekBusy = false;
+  if (pendingTime !== null){var t = pendingTime; pendingTime = null; requestSeek(t)}
+});
+video.addEventListener('error', function(){
+  seekBusy = false; pendingTime = null;
+  stage.classList.remove('video-ready');
+});
+
+/* ===== потоковая загрузка видео за постером (для будущего ролика) ===== */
+var heroInited = false;
+function initHeroOnce(){
+  if (heroInited) return;
+  heroInited = true;
+  requestAnimationFrame(tickLoadK);
+  if (!HAS_VIDEO) return;
+  loadHeroBlob().catch(function(){stage.classList.remove('video-ready')});
+}
+function loadHeroBlob(){
+  var ctrl = new AbortController();
+  var watchdog = setTimeout(function(){ctrl.abort()}, 20000);
+  return fetch(VIDEO_URL, {priority: 'low', signal: ctrl.signal}).then(function(res){
+    if (!res.ok) throw new Error('video http ' + res.status);
+    var total = Number(res.headers.get('Content-Length')) || VIDEO_BYTES || 1;
+    var reader = res.body.getReader();
+    var chunks = [];
+    function pump(){
+      return reader.read().then(function(step){
+        if (step.done) return;
+        clearTimeout(watchdog);
+        watchdog = setTimeout(function(){ctrl.abort()}, 20000);
+        chunks.push(step.value);
+        return pump();
+      });
+    }
+    return pump().then(function(){
+      clearTimeout(watchdog);
+      video.src = URL.createObjectURL(new Blob(chunks));
+      video.load();
+      video.addEventListener('canplay', function(){
+        requestSeek(heroProgress() * video.duration);
+        stage.classList.add('video-ready');
+      }, {once: true});
+    });
+  });
+}
+
+/* ===== ПЯТЬ ГЕЙТОВ: строки посимвольно совпадают со списком в CSS ===== */
+var GATES = [
+  '(max-width: 720px)',
+  '(orientation: portrait) and (max-width: 1024px)',
+  '(orientation: portrait) and (pointer: coarse)',
+  '(orientation: landscape) and (pointer: coarse) and (max-height: 560px)',
+  '(prefers-reduced-motion: reduce)'
+];
+var scrubOn = false;
+function enableScrub(){
+  if (scrubOn) return; scrubOn = true;
+  initHeroOnce();
+  addEventListener('scroll', onScroll, {passive: true});
+  bandState.forEach(function(s){s.op = -1; s.k = -1; s.visb = null});
+  zoomShown = -1;
+  unpinFinalStates();
+  shown = target = heroProgress();
+  applyBands(shown);
+  onScroll();
+}
+function disableScrub(){
+  if (!scrubOn) return; scrubOn = false;
+  removeEventListener('scroll', onScroll);
+  if (rafId !== null){cancelAnimationFrame(rafId); rafId = null}
+}
+function applyHeroMode(){
+  var gated = GATES.some(function(q){return matchMedia(q).matches});
+  document.body.classList.toggle('static-hero', gated);
+  if (gated) disableScrub(); else enableScrub();
+}
+var MQLS = GATES.map(function(q){return matchMedia(q)});
+MQLS.forEach(function(m){m.addEventListener('change', applyHeroMode)});
+
+/* ===== reduced motion вживую, в обе стороны ===== */
+var pinned = [];
+function pinToFinalStates(){
+  disableScrub();
+  document.querySelectorAll('.sec').forEach(function(sec){
+    if (!sec.classList.contains('in')){sec.classList.add('in', 'entered'); pinned.push(sec)}
+  });
+  if (holdcard && !holdcard.classList.contains('done')){
+    holdcard.classList.add('done');
+    setFill(1);
+    holdcard.dataset.pinned = '1';
+  }
+}
+function unpinFinalStates(){
+  pinned.forEach(function(sec){sec.classList.remove('in', 'entered')});
+  pinned = [];
+  if (holdcard && holdcard.dataset.pinned){
+    delete holdcard.dataset.pinned;
+    holdcard.classList.remove('done');
+    holdProg = 0; setFill(0);
+  }
+}
+reduceMq.addEventListener('change', function(e){
+  if (e.matches) pinToFinalStates();
+  else applyHeroMode();
+});
+
+/* ===== навбар ===== */
+var navSolid = false;
+function navCheck(){
+  var s = document.body.classList.contains('static-hero')
+    ? scrollY > innerHeight * 0.7
+    : scrollY > hero.offsetHeight - innerHeight * 0.5;
+  if (s !== navSolid){navSolid = s; nav.classList.toggle('solid', s)}
+}
+addEventListener('scroll', navCheck, {passive: true});
+
+/* ===== входы секций ===== */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(en){
+    var sec = en.target;
+    if (en.isIntersecting){
+      sec.classList.add('vis');
+      if (!sec.classList.contains('in')){
+        sec.classList.add('in');
+        setTimeout(function(){sec.classList.add('entered')}, 1300);
+      }
+    } else {
+      sec.classList.remove('vis');
+    }
+  });
+}, {threshold: 0.18});
+document.querySelectorAll('.sec').forEach(function(s){io.observe(s)});
+
+/* ===== интерактив: наполни чашку ===== */
+var holdcard = document.getElementById('holdcard');
+var holdbtn = document.getElementById('holdbtn');
+var coffee = document.getElementById('coffee');
+var holdProg = 0, holding = false, holdRaf = null, holdLast = 0;
+function setFill(v){coffee.style.transform = 'scaleY(' + v.toFixed(3) + ')'}
+function holdTick(now){
+  var dt = Math.min(80, now - (holdLast || now));
+  holdLast = now;
+  if (holding) holdProg += dt / 1600;
+  else holdProg -= dt / 900;
+  holdProg = clamp01(holdProg);
+  setFill(holdProg);
+  if (holdProg >= 1){
+    holdcard.classList.add('done');
+    holdbtn.textContent = 'Кофе налит. Ждем в гости';
+    holding = false; holdRaf = null; holdLast = 0;
+    return;
+  }
+  if (holding || holdProg > 0){
+    holdRaf = requestAnimationFrame(holdTick);
+  } else {
+    holdRaf = null; holdLast = 0;
+  }
+}
+function holdStart(e){
+  if (holdcard.classList.contains('done')) return;
+  if (e.type === 'pointerdown') e.preventDefault();
+  holding = true;
+  if (holdRaf === null) holdRaf = requestAnimationFrame(holdTick);
+}
+function holdEnd(){holding = false}
+if (holdbtn){
+  if (reduceMq.matches){
+    holdcard.classList.add('done'); setFill(1);
+    holdbtn.textContent = 'Кофе налит. Ждем в гости';
+  } else {
+    holdbtn.addEventListener('pointerdown', holdStart);
+    addEventListener('pointerup', holdEnd);
+    addEventListener('pointercancel', holdEnd);
+    holdbtn.addEventListener('keydown', function(e){
+      if ((e.key === ' ' || e.key === 'Enter') && !e.repeat){e.preventDefault(); holdStart(e)}
+    });
+    holdbtn.addEventListener('keyup', function(e){
+      if (e.key === ' ' || e.key === 'Enter') holdEnd();
+    });
+    holdbtn.addEventListener('blur', holdEnd);
+  }
+}
+
+/* ===== FAQ ===== */
+document.querySelectorAll('.qa .q').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var qa = btn.parentElement;
+    var open = qa.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});
+
+/* ===== пауза на скрытой вкладке ===== */
+document.addEventListener('visibilitychange', function(){
+  document.body.classList.toggle('paused', document.hidden);
+});
+
+/* ===== старт ===== */
+applyHeroMode();
+navCheck();
+if (reduceMq.matches) pinToFinalStates();
+requestAnimationFrame(function(){document.body.classList.add('ready')});
+})();
+</script>
+</body>
+</html>
